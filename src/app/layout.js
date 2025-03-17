@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import ThemeCom from "./components/ThemeCom";
+import { ClerkProvider } from "@clerk/nextjs";
  
  
  
@@ -27,10 +28,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
+
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        >
         <ThemeProvider>
         <ThemeCom >
         <Header/>
@@ -39,5 +42,6 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
       </body>
     </html>
+        </ClerkProvider>
   );
 }
